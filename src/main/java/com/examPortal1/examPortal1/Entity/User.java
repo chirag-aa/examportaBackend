@@ -1,6 +1,10 @@
 package com.examPortal1.examPortal1.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -18,7 +22,33 @@ public class User {
     private String phone;
 
     private boolean enabled =true;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "user")
+    @JsonIgnore
+    private Set<userRoles> userRoles=new HashSet<>();
+
+    public User(Long id, String userName, String password, String email, String firstName, String lastName, String phone, boolean enabled, Set<com.examPortal1.examPortal1.Entity.userRoles> userRoles) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.enabled = enabled;
+        this.userRoles = userRoles;
+    }
+
     public User(){}
+
+    public Set<com.examPortal1.examPortal1.Entity.userRoles> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<com.examPortal1.examPortal1.Entity.userRoles> userRoles) {
+        this.userRoles = userRoles;
+    }
+
     public User(Long id, String userName, String password, String email, String firstName, String lastName, String phone, boolean enabled) {
         this.id = id;
         this.userName = userName;
