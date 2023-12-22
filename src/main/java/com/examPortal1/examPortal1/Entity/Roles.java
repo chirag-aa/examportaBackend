@@ -11,9 +11,17 @@ public class Roles {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long roleId;
     private String roleName;
-
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "role")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "roles")
     private Set<userRoles>userRoles = new HashSet<>();
+    public Set<com.examPortal1.examPortal1.Entity.userRoles> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<com.examPortal1.examPortal1.Entity.userRoles> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+
 
     public Roles(){}
 

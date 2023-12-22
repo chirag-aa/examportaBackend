@@ -13,15 +13,15 @@ public class userRoles {
     private User user;
 
     @ManyToOne
-    private Roles role;
+    private Roles roles;
 
     public userRoles() {
     }
 
-    public userRoles(Long userRoleId, User user, Roles role) {
+    public userRoles(Long userRoleId, User user, Roles roles) {
         this.userRoleId = userRoleId;
         this.user = user;
-        this.role = role;
+        this.roles = roles;
     }
 
     public Long getUserRoleId() {
@@ -41,10 +41,10 @@ public class userRoles {
     }
 
     public Roles getRole() {
-        return role;
+        return roles;
     }
 
-    public void setRole(Roles role) {
-        this.role = role;
+    public void setRole(Roles roles) {
+        this.roles = roles;
     }
 }
